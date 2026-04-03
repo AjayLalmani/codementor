@@ -115,6 +115,12 @@ export function useWebRTC(socket: Socket | null, sessionId: string, isInitiator:
     };
   }, [socket, sessionId, hasVideo, isInitiator]);
 
+  useEffect(() => {
+    if (localVideoRef.current && localStreamRef.current) {
+      localVideoRef.current.srcObject = localStreamRef.current;
+    }
+  }, [hasVideo, isVideoOff]);
+
   const toggleMute = () => {
     if (localStreamRef.current) {
       const audioTrack = localStreamRef.current.getAudioTracks()[0];
