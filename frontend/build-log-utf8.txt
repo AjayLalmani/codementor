@@ -1,0 +1,65 @@
+﻿
+> codementor-frontend@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.0
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+node.exe : Failed to 
+compile.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "
+C:\Users\Ajay76\AppData\
+Roaming ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (Failed to compil   
+ e.:String) [], Remo    
+teException
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+
+./components/Editor.tsx:
+2:10
+Type error: '"@monaco-ed
+itor/react"' has no 
+exported member named 
+'MonacoEditor'. Did you 
+mean 'MonacoDiffEditor'?
+
+[0m [90m 1 |[39m 
+[36mimport[39m 
+[33mReact[39m 
+[36mfrom[39m [32m'rea
+ct'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m
+[90m 2 |[39m 
+[36mimport[39m { 
+[33mMonacoEditor[39m 
+} [36mfrom[39m [32m'@
+monaco-editor/react'[39
+m[33m;[39m[0m
+[0m [90m   |[39m     
+     
+[31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m[0m
+[0m [90m 4 |[39m 
+[90m// Using a custom 
+dynamic import for 
+Next.js to avoid SSR 
+issues if 
+necessary,[39m[0m
+[0m [90m 5 |[39m 
+[90m// but 
+@monaco-editor/react 
+handles SSR gracefully 
+by default.[39m[0m

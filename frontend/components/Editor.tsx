@@ -1,5 +1,4 @@
 import React from 'react';
-import { MonacoEditor } from '@monaco-editor/react';
 
 // Using a custom dynamic import for Next.js to avoid SSR issues if necessary,
 // but @monaco-editor/react handles SSR gracefully by default.
