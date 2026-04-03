@@ -59,6 +59,8 @@ export function useWebRTC(socket: Socket | null, sessionId: string, isInitiator:
         socket?.emit('signal:offer', { sessionId, sdp: pc.localDescription });
       }
 
+      socket?.emit('signal:ready', { sessionId });
+
     } catch (err) {
       console.error('Error accessing media devices.', err);
       setErrorDetails('Could not access camera/microphone.');
@@ -93,10 +95,23 @@ export function useWebRTC(socket: Socket | null, sessionId: string, isInitiator:
       }
     });
 
+    socket.on('signal:ready', async () => {
+      if (isInitiator) {
+        try {
+          const offer = await pc.createOffer({ iceRestart: true });
+          await pc.setLocalDescription(offer);
+          socket.emit('signal:offer', { sessionId, sdp: pc.localDescription });
+        } catch (e) {
+          console.error('Error creating offer on ready:', e);
+        }
+      }
+    });
+
     return () => {
       socket.off('signal:offer');
       socket.off('signal:answer');
       socket.off('signal:ice-candidate');
+      socket.off('signal:ready');
     };
   }, [socket, sessionId, hasVideo, isInitiator]);
 

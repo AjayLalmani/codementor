@@ -12,4 +12,8 @@ export const registerSignalingHandlers = (io: Server, socket: Socket) => {
   socket.on('signal:ice-candidate', (data: { sessionId: string; candidate: any }) => {
     socket.to(data.sessionId).emit('signal:ice-candidate', data.candidate);
   });
+
+  socket.on('signal:ready', (data: { sessionId: string }) => {
+    socket.to(data.sessionId).emit('signal:ready');
+  });
 };
